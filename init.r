@@ -1,3 +1,4 @@
+install.packages('Rcpp', dependencies = TRUE)
 install.packages('expm', dependencies = TRUE)
 install.packages('sfsmisc', dependencies = TRUE)
 install.packages('ltm', dependencies = TRUE)
