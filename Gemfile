@@ -1,5 +1,6 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
 
-gem 'rack'
-gem 'rails', '4.0.0'
-
+gem "thin"
+gem "sinatra"
+gem "rinruby"
+gem "foreman", :group => :development
