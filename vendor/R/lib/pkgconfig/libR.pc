@@ -1,0 +1,10 @@
+rhome=/app/vendor/R/lib/R
+rlibdir=${rhome}/lib
+rincludedir=/app/vendor/R/lib/R/include
+
+Name: libR
+Description: R as a library
+Version: 3.1.2
+Libs: -Wl,--export-dynamic -fopenmp  -L/app/.apt/usr/lib/libblas -L/app/.apt/usr/lib/lapack  -L${rlibdir} -lR
+Cflags: -I${rincludedir} -I${rincludedir}
+Libs.private:
