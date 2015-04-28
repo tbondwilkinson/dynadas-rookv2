@@ -1,4 +1,0 @@
-altmetric_data          Returns a data frame of metrics for a paper
-altmetrics              Grab altmetric data on any paper
-plot.altmetric          Plots metrics for an altmetric object
-print.altmetric         Print a summary for an altmetric object
