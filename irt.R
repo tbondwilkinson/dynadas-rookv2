@@ -3,6 +3,7 @@ require('Rook')
 library(Rook)
 library(rjson)
 library(ltm)
+library(CatPack)
 
 source('CATSurv.R')
 

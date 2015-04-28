@@ -1,1 +1,1 @@
-`/usr/share/R -e "source('/app/irt.R')"`
+`/app/bin/R -e "source('/app/irt.R')"`
