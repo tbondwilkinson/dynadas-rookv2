@@ -1,7 +1,1 @@
-# install.packages('Rcmdr', dependencies = TRUE)
-# install.packages(c('sfsmisc'), dependencies = TRUE)
-# install.packages(c('ltm'), dependencies = TRUE)
-# install.packages('./CATPack_0.1.tar.gz', repos=NULL, type="source")
-install.packages('devtools')
-install_deps(".")  
-install_deps("./CATPack_0.1.tar.gz",dependencies="logical")
+install.packages('./CATPack_0.1.tar.gz', repos=NULL, type="source")
