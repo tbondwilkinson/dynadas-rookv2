@@ -1,1 +1,1 @@
-`/vendor/R/bin/R -e "source('/app/demo.R')"`
+`/app/vendor/R/bin/R -e "source('/app/demo.R')"`
