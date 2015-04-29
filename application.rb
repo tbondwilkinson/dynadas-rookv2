@@ -20,7 +20,6 @@ get '/' do
     R.eval "print('Hello World from R')"
     R.eval "library(CATPack)"
 
-    html += "#{R.x}"
     html += "<p>Suceeded running R code...</p>"
 
   rescue
