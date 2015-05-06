@@ -20,5 +20,7 @@ theta <- estimateTheta(cat)
 next_item <- nextItem(cat)
 output <- {}
 output["theta"] <- theta
-output["next_item"] <- next_item
+output["next_item"] <- {}
+output["next_item"]["item_id"] <- next_item$next.item
+output["next_item"]["epv"] <- next_item$all.estimates$EPV
 write(toJSON(output), args[2])
