@@ -32,11 +32,11 @@ post '/next_question' do
   request.body.rewind
   data = JSON.parse request.body.read
 
-  File.open("#{RAILS_ROOT}/tmp/data_#{Process.pid}.json", 'w') { |file|
+  File.open("#{settings.root}/tmp/data_#{Process.pid}.json", 'w') { |file|
     file.write(data.to_json)
   }
 
-  system("Rscript #{RAILS_ROOT}/cat_script.R #{RAILS_ROOT}/tmp/data_#{Process.pid}.json #{RAILS_ROOT}/tmp/out_#{Process.pid}.json")
+  system("Rscript #{settings.root}/cat_script.R #{settings.root}/tmp/data_#{Process.pid}.json #{settings.root}/tmp/out_#{Process.pid}.json")
 
-  JSONP JSON.parse File.read "#{RAILS_ROOT}/tmp/out_#{Process.pid}.json"
+  JSONP JSON.parse File.read "#{settings.root}/tmp/out_#{Process.pid}.json"
 end
