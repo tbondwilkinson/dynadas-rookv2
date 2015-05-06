@@ -3,8 +3,6 @@ require 'sinatra'
 require 'sinatra/jsonp'
 require 'sinatra/cross_origin'
 
-r = RinRuby.new(:echo=>false)
-
 set :allow_origin, :any
 set :allow_methods, [:get, :post, :options]
 set :allow_credentials, true
