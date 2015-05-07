@@ -16,7 +16,6 @@ cat@D <- json_cat$D
 cat@difficulty <- unlist(json_cat$difficulty)
 cat@X <- json_cat$X
 cat@poly <- TRUE
-theta <- estimateTheta(cat)
 next_item <- nextItem(cat)
 output <- list()
 output$theta <- theta
