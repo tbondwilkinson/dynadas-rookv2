@@ -18,6 +18,7 @@ cat@D <- json_cat$D
 cat@difficulty <- unlist(json_cat$difficulty)
 cat@X <- json_cat$X
 cat@poly <- TRUE
+print(cat)
 next_item <- nextItem(cat)
 output <- list()
 output$next_item <- list()
