@@ -18,7 +18,6 @@ cat@X <- json_cat$X
 cat@poly <- TRUE
 next_item <- nextItem(cat)
 output <- list()
-output$theta <- theta
 output$next_item <- list()
 output$next_item$item_id = next_item$next.item
 output$next_item$epv = next_item$all.estimates$EPV
