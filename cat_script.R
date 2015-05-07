@@ -15,7 +15,7 @@ cat@lowerBound <- json_cat$lowerBound
 cat@upperBound <- json_cat$upperBound
 cat@quadPoints <- json_cat$quadPoints
 cat@D <- json_cat$D
-cat@difficulty <- unlist(json_cat$difficulty)
+cat@difficulty <- lapply(json_cat$difficulty, unlist)
 cat@X <- json_cat$X
 cat@poly <- TRUE
 print(cat)
