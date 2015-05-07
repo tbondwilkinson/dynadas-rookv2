@@ -20,4 +20,4 @@ install_if_missing = function(p) {
 }
 invisible(sapply(my_packages, install_if_missing))
 
-install.packages('./CATPack_0.1.tar.gz', repos=NULL, type="source")
+install.packages('./CATPack_1.0.tar.gz', repos=NULL, type="source")
