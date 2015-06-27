@@ -1,7 +1,4 @@
-library(methods)
-library(CATPack)
 cat <- new("CATsurv")
-library(rjson)
 args <- commandArgs(TRUE)
 json_cat <- fromJSON(file=args[1])
 cat@guessing <- json_cat$guessing
