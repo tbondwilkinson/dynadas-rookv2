@@ -7,8 +7,6 @@ json_cat <- fromJSON(file=args[1])
 cat@guessing <- json_cat$guessing
 cat@discrimination <- unlist(json_cat$discrimination)
 cat@answers <- as.numeric(json_cat$answers)
-print(cat@answers)
-print(json_cat$answers)
 cat@priorName <- json_cat$priorName
 cat@priorParams <- json_cat$priorParams
 cat@lowerBound <- json_cat$lowerBound
