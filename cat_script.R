@@ -16,8 +16,7 @@ cat@D <- json_cat$D
 cat@difficulty <- lapply(json_cat$difficulty, unlist)
 cat@X <- json_cat$X
 cat@poly <- TRUE
-print(cat)
-next_item <- nextItem(cat)
+next_item <- nextItemEPVcpp(cat)
 output <- list()
 output$next_item <- list()
 output$next_item$item_id = next_item$next.item
