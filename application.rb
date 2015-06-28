@@ -59,6 +59,7 @@ EOF
   next_item = r.eval("next_item").to_ruby
   epvs = r.eval("epvs").to_ruby
   JSONP Hash["next_item" => next_item, "epvs" => epvs]
+end
 
 post '/look_ahead' do
   request.body.rewind
@@ -88,5 +89,4 @@ EOF
   
   next_items = r.eval("next_items").to_ruby
   JSONP Hash["next_items" => next_items]
-
 end
