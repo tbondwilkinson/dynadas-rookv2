@@ -14,7 +14,7 @@ configure do
   enable :cross_origin
 end
 
-system "R -f rserve.r --no-save --gui-none --RS-conf ./rserve.conf"
+system "R -f rserve.r"
 
 # root page
 get '/' do
