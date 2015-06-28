@@ -6,7 +6,7 @@
 ###########################################################
 # Update this line with the R packages to install:
 
-my_packages = c("sfsmisc", "ltm", "rjson")
+my_packages = c("sfsmisc", "ltm", "rjson", "Rserve")
 
 ###########################################################
 
@@ -21,6 +21,3 @@ install_if_missing = function(p) {
 invisible(sapply(my_packages, install_if_missing))
 
 install.packages('./CATPack_0.1.tar.gz', repos=NULL, type="source")
-library(methods)
-library(rjson)
-library(CATPack)

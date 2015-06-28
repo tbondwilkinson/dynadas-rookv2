@@ -1,4 +1,5 @@
 require 'json'
+require 'rserve'
 require 'sinatra'
 require 'sinatra/jsonp'
 require 'sinatra/cross_origin'
@@ -32,11 +33,29 @@ post '/next_question' do
   request.body.rewind
   data = JSON.parse request.body.read
 
-  File.open("#{settings.root}/tmp/data_#{Process.pid}.json", 'w') { |file|
-    file.write(data.to_json)
-  }
+  r = Rserve::Connections.new
+  r.void_eval <<-EOF
+cat <- new("CATsurv")
+json_cat <- fromJSON('#{data.to_json}')
+cat@guessing <- json_cat$guessing
+cat@discrimination <- unlist(json_cat$discrimination)
+cat@answers <- as.numeric(json_cat$answers)
+cat@priorName <- json_cat$priorName
+cat@priorParams <- json_cat$priorParams
+cat@lowerBound <- json_cat$lowerBound
+cat@upperBound <- json_cat$upperBound
+cat@quadPoints <- json_cat$quadPoints
+cat@D <- json_cat$D
+cat@difficulty <- lapply(json_cat$difficulty, unlist)
+cat@X <- json_cat$X
+cat@poly <- TRUE
+response <- nextItemEPVcpp(cat)
+next_item = response$next.item
+epvs = response$all.estimates$EPV
+EOF
+  
+  next_item = r.eval("next_item").to_ruby
+  epvs = r.eval("epvs").to_ruby
+  JSONP Hash["next_item" => next_item, "epvs" => epvs]
 
-  system("Rscript #{settings.root}/cat_script.R #{settings.root}/tmp/data_#{Process.pid}.json #{settings.root}/tmp/out_#{Process.pid}.json")
-
-  JSONP JSON.parse File.read "#{settings.root}/tmp/out_#{Process.pid}.json"
 end
