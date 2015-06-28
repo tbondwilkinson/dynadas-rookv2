@@ -33,7 +33,7 @@ post '/next_question' do
   request.body.rewind
   data = JSON.parse request.body.read
 
-  r = Rserve::Connections.new
+  r = Rserve::Connection.new
   r.void_eval <<-EOF
 cat <- new("CATsurv")
 json_cat <- fromJSON('#{data.to_json}')
