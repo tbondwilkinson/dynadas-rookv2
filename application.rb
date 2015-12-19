@@ -48,14 +48,24 @@ cat@lowerBound <- json_cat$lowerBound
 cat@upperBound <- json_cat$upperBound
 cat@quadPoints <- json_cat$quadPoints
 cat@D <- json_cat$D
-cat@difficulty <- lapply(json_cat$difficulty, unlist)
 cat@X <- json_cat$X
-cat@poly <- TRUE
-response <- nextItemEPVcpp(cat)
+if (json_cat$poly) {
+  cat@diffculty <- lapply(json_cat$difficulty, unlist)
+  cat@poly <- TRUE
+} else {
+  cat@difficulty <- json_cat$difficult
+  cat@poly <- FALSE
+}
+cat@integration <- json_cat$integration
+cat@estimation <- json_cat$estimation
+cat@selection <- json_cat$selection
+cat@coverage <- json_cat$coverage
+cat@points <- json_cat$points
+response <- nextItem(cat)
 next_item = response$next.item
 epvs = response$all.estimates$EPV
 EOF
-  
+
   next_item = r.eval("next_item").to_ruby
   epvs = r.eval("epvs").to_ruby
   JSONP Hash["next_item" => next_item, "epvs" => epvs]
@@ -70,7 +80,7 @@ post '/look_ahead' do
   r = Rserve::Connection.new
   r.void_eval <<-EOF
 cat <- new("CATsurv")
-json_cat <- fromJSON('#{cat.to_json}')
+json_cat <- fromJSON('#{data.to_json}')
 cat@guessing <- json_cat$guessing
 cat@discrimination <- unlist(json_cat$discrimination)
 cat@answers <- as.numeric(json_cat$answers)
@@ -80,13 +90,23 @@ cat@lowerBound <- json_cat$lowerBound
 cat@upperBound <- json_cat$upperBound
 cat@quadPoints <- json_cat$quadPoints
 cat@D <- json_cat$D
-cat@difficulty <- lapply(json_cat$difficulty, unlist)
 cat@X <- json_cat$X
-cat@poly <- TRUE
+if (json_cat$poly) {
+  cat@diffculty <- lapply(json_cat$difficulty, unlist)
+  cat@poly <- TRUE
+} else {
+  cat@difficulty <- json_cat$difficult
+  cat@poly <- FALSE
+}
+cat@integration <- json_cat$integration
+cat@estimation <- json_cat$estimation
+cat@selection <- json_cat$selection
+cat@coverage <- json_cat$coverage
+cat@points <- json_cat$points
 response <- lookAheadEPVcpp(cat, #{this_item})
 next_items = response$next.items
 EOF
-  
+
   next_items = r.eval("next_items").to_ruby
   JSONP Hash["next_items" => next_items]
 end
