@@ -6,7 +6,7 @@
 ###########################################################
 # Update this line with the R packages to install:
 
-my_packages = c("sfsmisc", "ltm", "rjson", "Rserve", "Rcpp", "BH")
+my_packages = c("sfsmisc", "ltm", "rjson", "Rserve", "Rcpp", "BH", "RcppGSL")
 
 ###########################################################
 
