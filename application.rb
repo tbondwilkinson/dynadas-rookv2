@@ -53,7 +53,7 @@ if (json_cat$poly) {
   cat@difficulty <- lapply(json_cat$difficulty, unlist)
   cat@poly <- TRUE
 } else {
-  cat@difficulty <- lapply(json_cat$difficulty, unlist)
+  cat@difficulty <- json_cat$difficulty
   cat@poly <- FALSE
 }
 cat@integration <- json_cat$integration
