@@ -50,10 +50,10 @@ cat@quadPoints <- json_cat$quadPoints
 cat@D <- json_cat$D
 cat@X <- json_cat$X
 if (json_cat$poly) {
-  cat@diffculty <- lapply(json_cat$difficulty, unlist)
+  cat@difficulty <- lapply(json_cat$difficulty, unlist)
   cat@poly <- TRUE
 } else {
-  cat@difficulty <- json_cat$difficulty
+  cat@difficulty <- lapply(json_cat$difficulty, unlist)
   cat@poly <- FALSE
 }
 cat@integration <- json_cat$integration
@@ -80,7 +80,7 @@ post '/look_ahead' do
   r = Rserve::Connection.new
   r.void_eval <<-EOF
 cat <- new("CATsurv")
-json_cat <- fromJSON('#{data.to_json}')
+json_cat <- fromJSON('#{cat.to_json}')
 cat@guessing <- json_cat$guessing
 cat@discrimination <- unlist(json_cat$discrimination)
 cat@answers <- as.numeric(json_cat$answers)
@@ -92,7 +92,7 @@ cat@quadPoints <- json_cat$quadPoints
 cat@D <- json_cat$D
 cat@X <- json_cat$X
 if (json_cat$poly) {
-  cat@diffculty <- lapply(json_cat$difficulty, unlist)
+  cat@difficulty <- lapply(json_cat$difficulty, unlist)
   cat@poly <- TRUE
 } else {
   cat@difficulty <- json_cat$difficulty
