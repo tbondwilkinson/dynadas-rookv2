@@ -4,13 +4,21 @@ It is configured to run on heroku.com and scale using their web workers.
 
 ## Current API:
 
-/next_question
+### Next Question
 This takes a cat object and returns the item with the lowest EVP.
 It also returns the EVP for all items in case the user wants them.
 
 All the parameters that are normally in a R cat object can be set here
-### Example request:
+#### URL
+https://dynadas-rookv2.herokuapp.com/next_question
+#### Method
+`POST`
+#### URL Params
+None
+
+#### Example request:
 ```json
+
 {
    "guessing":[
       0,
@@ -247,7 +255,7 @@ All the parameters that are normally in a R cat object can be set here
    "points":40
 }
 ```
-### Response:
+#### Response:
 ```json
 {
   "next_item": 5,
@@ -274,16 +282,20 @@ All the parameters that are normally in a R cat object can be set here
 }
 ```
 
-/look_ahead
+### Look Ahead
 This returns the possible next items depending on what the user answers.
 
-The caller must provide two data fields:
+#### URL
+https://dynadas-rookv2.herokuapp.com/look_ahead
+#### Method
+`POST`
+#### URL Parameters
+None
+### Body parameters
+- `this_item`: the current index of the question the user is about to answer
+- `cat`: the cat object (as would be provided in `next_item`)
 
-`this_item`: the current index of the question the user is about to answer
-
-`cat`: the cat object (as would be provided in `next_item`)
-
-### Example request
+#### Example request
 ```json
 {
    "this_item":1,
@@ -524,7 +536,7 @@ The caller must provide two data fields:
    }
 }
 ```
-### Response:
+#### Response:
 ```json
 {
   "next_items": [
